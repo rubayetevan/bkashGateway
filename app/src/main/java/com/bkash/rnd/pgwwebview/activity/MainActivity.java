@@ -71,4 +71,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        try {
+            Intent intent = getIntent();
+            String response = intent.getStringExtra("response");
+            amount.setText(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

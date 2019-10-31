@@ -26,10 +26,13 @@ public class JavaScriptInterface {
      * Show a toast from the web page
      */
     @JavascriptInterface
-    public void switchActivity() {
+    public void switchActivity(String response) {
         Intent intent = new Intent(mContext, MainActivity.class);
+        intent.putExtra("response",response);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         mContext.startActivity(intent);
     }
+
+
 
 }

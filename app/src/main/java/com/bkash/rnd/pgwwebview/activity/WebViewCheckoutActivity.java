@@ -7,11 +7,13 @@ import android.net.http.SslError;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.JavascriptInterface;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.bkash.rnd.pgwwebview.R;
 import com.bkash.rnd.pgwwebview.model.Checkout;
@@ -60,6 +62,7 @@ public class WebViewCheckoutActivity extends AppCompatActivity {
         mWebView.getSettings().setAllowFileAccessFromFileURLs(true);
         mWebView.getSettings().setAllowUniversalAccessFromFileURLs(true);
 
+
         /*
         * To control any kind of interaction from html file
            */
@@ -102,9 +105,13 @@ public class WebViewCheckoutActivity extends AppCompatActivity {
             String paymentRequest = "{paymentRequest:" + request + "}";
             mWebView.loadUrl("javascript:callReconfigure(" + paymentRequest + " )");
             mWebView.loadUrl("javascript:clickPayButton()");
+            mWebView.loadUrl("javascript:switchToMain()");
             progressBar.setVisibility(view.GONE);
-
         }
 
     }
+
+
+
+
 }
