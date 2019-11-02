@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bkash.rnd.pgwwebview.R;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText amount;
     private RadioButton sale, auth;
     private RadioButton version1_1, version1_2;
+    private TextView responseText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         auth = (RadioButton) findViewById(R.id.intent_auth);
         version1_1 =(RadioButton) findViewById(R.id.one_one);
         version1_2 = (RadioButton) findViewById(R.id.one_two);
+        responseText = findViewById(R.id.response_text);
+
 
         sale.setChecked(true);
         version1_1.setChecked(true);
@@ -79,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             Intent intent = getIntent();
             String response = intent.getStringExtra("response");
-            amount.setText(response);
+            responseText.setText(response);
         } catch (Exception e) {
             e.printStackTrace();
         }
